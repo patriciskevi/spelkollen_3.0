@@ -1,8 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+  // add bet form
+  const form = document.querySelector('.side-form');
+  M.Sidenav.init(form, {
+    edge: 'right'
+  });
+
   // nav menu
-  const menus = document.querySelectorAll('.side-menu');
-  M.Sidenav.init(menus, {edge: 'right'});
-  // add recipe form
-  const forms = document.querySelectorAll('.side-form');
-  M.Sidenav.init(forms, {edge: 'left'});
-});
+  const menu = document.querySelector('.side-menu');
+  M.Sidenav.init(menu, {
+    edge: 'left'
+  });
+})

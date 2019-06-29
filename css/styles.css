@@ -1,75 +1,93 @@
 /* colours */
-:root{
+:root {
   --primary: #FFE9D2;
   --secondary: #FFE1C4;
   --title: #FF8816;
 }
 
 /* layout styles */
-nav{
+nav {
   background: var(--primary);
   border-bottom: 10px solid var(--secondary);
 }
-nav a{
+
+nav a {
   text-transform: uppercase;
   color: var(--title);
 }
-nav a span{
+
+nav a span {
   font-weight: bold;
 }
-nav .sidenav-trigger{
+
+nav .sidenav-trigger {
   margin: 0;
 }
 
-/* recipe styles */
-.recipes{
+/* bet styles */
+.bets {
   margin-top: 20px;
 }
-.card-panel.recipe{
-  border-radius: 8px;
+
+.card-panel.bet {
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   padding: 10px;
-  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+  position: relative;
+  box-shadow: 0px 1px 3px rgba(90, 90, 90, 0.1);
   display: grid;
   grid-template-columns: 2fr 6fr 1fr;
-  grid-template-areas: "image details delete";
-  position: relative;
+  grid-template-areas: "avatar details icons";
+  align-items: center;
 }
-.recipe img{
-  grid-area: image;
+
+.bet img {
+  grid-area: avatar;
   max-width: 60px;
 }
-.recipe-details{
+
+.bet-particulars {
   grid-area: details;
-  margin-top: 6px;
 }
-.recipe-delete{
-  grid-area: delete;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+
+.bet-delete {
+  grid-area: icons;
 }
-.recipe-delete i{
-  font-size: 18px;
+
+.bet-actions i {
+  font-size: 24px;
 }
-.recipe-title{
+
+.bet-player {
   font-weight: bold;
 }
-.recipe-ingredients{
+
+.bet-type,
+.bet-sum {
   font-size: 0.8em;
 }
 
-/* form-styles */
-.add-btn{
-  background: var(--title) !important;
+/* form styles */
+.add-btn {
+  background: var(--title);
+  position: absolute;
+  bottom: 20px;
+  box-shadow: 1px 1px 3px rgba(90, 90, 90, 0.2);
 }
-input{
+
+.side-form button {
+  background: var(--title);
+  box-shadow: 1px 1px 3px rgba(90, 90, 90, 0.2);
+}
+
+input {
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
 }
-.side-form button{
-  background: var(--title);
-  box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
-}
-form .input-field{
+
+form .input-field {
   margin-top: 30px;
 }
