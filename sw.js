@@ -1,4 +1,5 @@
-const staticCacheName = 'site-static';
+const staticCache = 'site-static-v3';
+const dynamicCache = 'site-dynamic-v1'
 const assets = [
     '/',
     '/index.html',
@@ -7,16 +8,17 @@ const assets = [
     '/js/materialize.min.js',
     '/css/materialize.min.css',
     '/css/styles.css',
-    '/img/user_avatar.svg',
+    '/img/baseline_account_circle_black_48.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
-    'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2'
+    'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
+    '/pages/fallback.html',
 ];
 
 // install service worker
 self.addEventListener('install', evt => {
     // console.log('service worker has been installed', evt)
     evt.waitUntil(
-        caches.open(staticCacheName).then(cache => {
+        caches.open(staticCache).then(cache => {
             console.log('caching shell assets');
             cache.addAll(assets);
         })
@@ -26,6 +28,15 @@ self.addEventListener('install', evt => {
 // activate event
 self.addEventListener('activate', evt => {
     // console.log('service worker has been activated', evt)
+    evt.waitUntil(
+        caches.keys().then(keys => {
+            // console.log(keys);
+            return Promise.all(keys
+                .filter(key => key !== staticCache && key !== dynamicCache)
+                .map(key => caches.delete(key))
+            )
+        })
+    );
 });
 
 // fetch event
@@ -33,7 +44,12 @@ self.addEventListener('fetch', evt => {
     // console.log('fetch event', evt)
     evt.respondWith(
         caches.match(evt.request).then(cacheRes => {
-            return cacheRes || fetch(evt.request);
-        })
+            return cacheRes || fetch(evt.request).then(fetchRes => {
+                return caches.open(dynamicCache).then(cache => {
+                    cache.put(evt.request.url, fetchRes.clone());
+                    return fetchRes;
+                })
+            })
+        }).catch(() => caches.match('/pages/fallback.html'))
     );
 });
