@@ -24,7 +24,7 @@ const renderBet = (data, id) => {
       <div class="bet-sum grey-text text-darken-1">${data.sum}</div>
     </div>
     <div class="bet-actions">
-      <i class="material-icons grey-text text-darken-1  data-id="${id}">delete_outline</i>
+      <i class="material-icons grey-text text-darken-1" data-id="${id}">delete_outline</i>
       <i class="material-icons grey-text text-darken-1">
         redo
       </i>
@@ -34,4 +34,10 @@ const renderBet = (data, id) => {
   `;
 
   bets.innerHTML += html;
+}
+
+// remove bet from UI
+const removeBet = (id) => {
+  const bet = document.querySelector(`.bet[data-id=${id}]`);
+  bet.remove();
 }
