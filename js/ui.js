@@ -1,5 +1,3 @@
-const bets = document.querySelector('.bets');
-
 document.addEventListener('DOMContentLoaded', () => {
   // add bet form
   const form = document.querySelector('.side-form');
@@ -16,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // render bet data
 const renderBet = (data, id) => {
+  const bets = document.querySelector('.bets');
   const html = `
   <div class="card-panel bet white row" data-id="${id}">
     <img src="/img/baseline_account_circle_black_48.png" alt="player avatar" />

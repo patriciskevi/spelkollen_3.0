@@ -23,3 +23,25 @@ db.collection('bets').onSnapshot(snapshot => {
         }
     });
 });
+
+// add new bet
+const form = document.querySelector('.add-bet');
+form.addEventListener('submit', evt => {
+    evt.preventDefault();
+
+    const bet = {
+        player: form.player.value,
+        type: form.type.value,
+        sum: form.sum.value
+    };
+
+    db.collection('bets').add(bet)
+        .catch(err => {
+            console.log(err)
+        });
+
+    form.player.value = '';
+    form.type.value = '';
+    form.sum.value = '';
+
+});
