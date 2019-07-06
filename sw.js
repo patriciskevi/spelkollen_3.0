@@ -1,5 +1,5 @@
-const staticCache = "site-static-v11";
-const dynamicCache = "site-dynamic-v22";
+const staticCache = "site-static-v53";
+const dynamicCache = "site-dynamic-v70";
 const assets = [
   "/",
   "/index.html",
@@ -11,7 +11,8 @@ const assets = [
   "/img/baseline_account_circle_black_48.png",
   "https://fonts.googleapis.com/icon?family=Material+Icons",
   "https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2",
-  "/pages/fallback.html"
+  "/pages/fallback.html",
+  '/pages/archive.html'
 ];
 
 // cache size limit function
