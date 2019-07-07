@@ -18,30 +18,13 @@ db.collection('bets').onSnapshot(snapshot => {
     archivedBets.innerHTML = "";
 
     snapshot.forEach(bet => {
-
-        console.log(bet.data());
         const html = renderBet(bet.data(), bet.id);
-        console.log('hello', html);
+
         if (bet.data().archive) {
-            console.log('hii')
             archivedBets.innerHTML += html;
         } else {
             activeBets.innerHTML += html;
         }
-
-        // if (bet.type === 'added') {
-        //     // add the document data to the UI
-        //     renderBet(bet.doc.data(), bet.doc.id);
-        // }
-        // if (bet.type === 'removed') {
-        //     // remove the document data from the UI
-        //     removeBet(bet.doc.id);
-        // }
-        // if (bet.type === 'modified') {
-        //     // archive bet
-        //     console.log('modified')
-        //     renderBet(bet.doc.data(), bet.doc.id)
-        // }
     });
 });
 
@@ -71,20 +54,19 @@ form.addEventListener('submit', evt => {
 // delete active bet and archive bet
 const betContainer = document.querySelector('.bets');
 betContainer.addEventListener('click', evt => {
-    console.log(evt.target.textContent);
     // delete active bet
-    if (evt.target.textContent === 'delete_outline') {
-        const id = evt.target.getAttribute('data-id');
-        db.collection('bets').doc(id).delete();
-    }
+    // if (evt.target.textContent === 'delete_outline') {
+    //     const id = evt.target.getAttribute('data-id');
+    //     db.collection('bets').doc(id).delete();
+    // }
     // archive bet
-    if (evt.target.textContent === 'move_to_inbox') {
-        const id = evt.target.getAttribute('data-id');
-        let bet = {
-            archive: true
-        }
-        db.collection('bets').doc(id).update(bet);
-    }
+    // if (evt.target.textContent === 'move_to_inbox') {
+    //     const id = evt.target.getAttribute('data-id');
+    //     let bet = {
+    //         archive: true
+    //     }
+    //     db.collection('bets').doc(id).update(bet);
+    // }
 });
 
 // delete archived bet
@@ -95,3 +77,18 @@ archiveBetContainer.addEventListener('click', evt => {
         db.collection('bets').doc(id).delete();
     }
 })
+
+// const modalDelete = () => {
+//     const betContainer = document.querySelector('.bets');
+//     const modal = document.querySelector('.modal');
+//     betContainer.addEventListener('click', evt => {
+//         if (evt.target.textContent === 'delete_outline') {
+//             const id = evt.target.getAttribute('data-id');
+//             modal.addEventListener('click', evt => {
+//                 if (evt.target.textContent === 'Fortsätt') {
+//                     db.collection('bets').doc(id).delete();
+//                 }
+//             })
+//         }
+//     })
+// }

@@ -31,22 +31,46 @@
     <div id="bets"></div>
   </div>
 
-
-  <a class="btn-floating waves-effect pulse btn-medium add-btn sidenav-trigger" data-target="side-form"><i
-      class="material-icons">add</i></a>
-
-
   <!-- archived bets -->
   <div class="archive-bets container">
     <h6 class="center grey-text text-darken-1">Avgjorda Spel</h6>
     <div id="archive-bets"></div>
   </div>
 
+  <a class="btn-floating waves-effect pulse btn-medium add-btn sidenav-trigger" data-target="side-form"><i
+      class="material-icons">add</i></a>
+
   <!-- side nav -->
   <ul class="sidenav side-menu" id="side-menu">
     <li><a class="subheader">SPELKOLLEN</a></li>
     <li><a href="/pages/archive.html">Avgjorda Spel</a></li>
   </ul>
+
+  <!-- delete modal structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4></h4>
+      <p>Du är på väg att ta bort detta spelobjektet.</p>
+      <p>Vill du fortsätta?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat continue">Avbryt</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat delete">Fortsätt</a>
+    </div>
+  </div>
+
+  <!-- archive modal structure -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4></h4>
+      <p>Du är på väg att arkivera detta spelobjekt.</p>
+      <p>Vill du fortsätta?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat continue">Avbryt</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat delete">Fortsätt</a>
+    </div>
+  </div>
 
   <!-- add bet side nav -->
   <div class="sidenav side-form" id="side-form">
